@@ -36,20 +36,7 @@ function startGame() {
     cardsEl.textContent = "Cards: " + firstCard + " - " + secondCard
     sumEl.textContent = "Sum: " + sum
 
-    if (sum === 21) {
-        money += 200
-        moneyEl.textContent = auxiliarMoneyMessage + money
-        messageEl.textContent = "Congrats, you have a blackjack! $200 has been added to your account! Try a new game" 
-        hasBlackJack = true
-    } else if (sum > 21) {
-        money -= 50
-        moneyEl.textContent = auxiliarMoneyMessage + money
-
-        messageEl.textContent = "You lost! $50 has been debited from your account"
-        isAlive = false
-    } else {
-        messageEl.textContent = "Do you wanna draw new cards?"
-    }
+    checkSum()
 }
 
 function getNewCard() {
@@ -89,6 +76,10 @@ function getNewCard() {
     sum += newCard
     sumEl.textContent = "Sum: " + sum
 
+    checkSum()
+}
+
+function checkSum() {
     if (sum === 21) {
         money += 200
         moneyEl.textContent = auxiliarMoneyMessage + money
@@ -103,4 +94,5 @@ function getNewCard() {
     } else {
         messageEl.textContent = "Do you wanna draw new cards?"
     }
+
 }
